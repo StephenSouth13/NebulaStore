@@ -6,8 +6,10 @@ import "./login.css";
 export default function LoginPage() {
   return (
     <main className="auth-page">
-      <h1>Đăng nhập vào NebulaStore</h1>
-      <LoginForm />
+      <div className="login-container">
+        <h1>Đăng nhập vào NebulaStore</h1>
+        <LoginForm />
+      </div>
     </main>
   );
 }

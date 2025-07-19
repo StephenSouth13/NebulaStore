@@ -44,3 +44,20 @@
   font-size: 18px;
   font-weight: bold;
 }
+.checkout-button {
+  margin-top: 24px;
+  width: 100%;
+  padding: 14px;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.checkout-button:hover {
+  background: linear-gradient(135deg, #4834d4, #9980fa);
+}

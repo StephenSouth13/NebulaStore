@@ -1,19 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Xử lý đăng nhập tại đây
-    console.log({ email, password });
+    // TODO: Xử lý đăng nhập
+    console.log("Login with:", { email, password });
   };
 
   return (
-    <form className="form" onSubmit={handleLogin}>
+    <form className="login-form" onSubmit={handleSubmit}>
       <input
         type="email"
         placeholder="Email"
@@ -29,6 +30,9 @@ export default function LoginForm() {
         required
       />
       <button type="submit">Đăng nhập</button>
+      <div className="login-footer">
+        Chưa có tài khoản? <Link href="/signup">Đăng ký ngay</Link>
+      </div>
     </form>
   );
 }
