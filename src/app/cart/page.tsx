@@ -1,26 +1,16 @@
-// src/components/cart/Cart.tsx
+// ✅ Không truyền items nữa, vì Cart tự lấy từ context
 "use client";
 
-import { useRouter } from "next/navigation";
+import Cart from "@/components/cart/Cart";
+import "./cart.css";
 
-export default function Cart() {
-  const router = useRouter();
-
-  const handleCheckout = () => {
-    // Chuyển sang trang thanh toán
-    router.push("/checkout/payment");
-  };
-
+export default function CartPage() {
   return (
-    <div className="cart-items">
-      {/* Giỏ hàng - thay bằng logic map sản phẩm thực tế */}
-      <p>Sản phẩm A x1 - 1.000.000đ</p>
-      <p>Sản phẩm B x2 - 2.000.000đ</p>
-
-      {/* Nút thanh toán */}
-      <button className="checkout-button" onClick={handleCheckout}>
-        Thanh toán
-      </button>
-    </div>
+    <main className="cart-page">
+      <div className="cart-container">
+        <h1>Giỏ hàng của bạn</h1>
+        <Cart /> {/* ✅ KHÔNG truyền items ở đây */}
+      </div>
+    </main>
   );
 }

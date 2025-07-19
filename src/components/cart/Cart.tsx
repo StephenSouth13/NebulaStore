@@ -1,46 +1,42 @@
-// src/components/cart/Cart.tsx
 "use client";
 
-import { useRouter } from "next/navigation";
-
-const fakeCart = [
-  { id: 1, name: "Tai nghe Nebula X1", price: 1200000, quantity: 1 },
-  { id: 2, name: "Chuột NebulaPro", price: 850000, quantity: 2 },
-];
+import { useCart } from "@/context/CartContext";
+import Link from "next/link";
 
 export default function Cart() {
-  const router = useRouter();
-  const total = fakeCart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
+  const { cart } = useCart();
 
-  const handleCheckout = () => {
-    router.push("/checkout/payment"); // Chuyển sang bước thanh toán
-  };
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <div className="cart-list">
-      {fakeCart.map((item) => (
-        <div className="cart-item" key={item.id}>
-          <div>
-            <h3>{item.name}</h3>
-            <p>{item.quantity} x {item.price.toLocaleString()} đ</p>
+      {cart.length === 0 ? (
+        <p>Giỏ hàng của bạn đang trống.</p>
+      ) : (
+        <>
+          {cart.map((item) => (
+            <div className="cart-item" key={item.id}>
+              <div>
+                <h3>{item.name}</h3>
+                <p>
+                  {item.quantity} x {item.price.toLocaleString()} đ
+                </p>
+              </div>
+              <span>{(item.quantity * item.price).toLocaleString()} đ</span>
+            </div>
+          ))}
+          <hr />
+          <div className="cart-total">
+            <strong>Tổng cộng:</strong>
+            <span>{total.toLocaleString()} đ</span>
           </div>
-          <span>
-            {(item.quantity * item.price).toLocaleString()} đ
-          </span>
-        </div>
-      ))}
-      <hr />
-      <div className="cart-total">
-        <strong>Tổng cộng:</strong>
-        <span>{total.toLocaleString()} đ</span>
-      </div>
-
-      <button className="checkout-button" onClick={handleCheckout}>
-        Tiến hành thanh toán
-      </button>
+          <div style={{ marginTop: "20px", textAlign: "right" }}>
+            <Link href="/checkout">
+              <button className="checkout-button">Tiến hành thanh toán</button>
+            </Link>
+          </div>
+        </>
+      )}
     </div>
   );
 }
