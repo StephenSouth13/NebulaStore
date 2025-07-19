@@ -1,0 +1,20 @@
+.product-sort {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.product-page {
+  padding: 32px;
+  background: linear-gradient(to bottom, #0d0d2b, #1b1b3a);
+  color: white;
+  min-height: 100vh;
+}
+
+.product-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}

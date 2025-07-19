@@ -1,0 +1,9 @@
+.product-filter {
+  padding: 8px 12px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-right: 12px;
+  color: #1a1a1a; /* hoặc #333 hoặc black hoặc white nếu dark */
+  background-color: #fff; /* hoặc transparent nếu muốn */
+}

@@ -24,20 +24,20 @@ export default function HomePage() {
           transition={{ duration: 1, delay: 0.3 }}
           className="home-subtitle"
         >
-          Cửa hàng công nghệ đậm chất vũ trụ ✨
+          Khám phá thế giới công nghệ hiện đại giữa không gian vũ trụ 🌌
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.6 }}
           className="home-buttons"
         >
           <Link href="/san-pham" className="btn-primary">
-            🚀 Khám phá sản phẩm
+            🚀 Mua ngay
           </Link>
           <Link href="/gioi-thieu" className="btn-secondary">
-            🌌 Về chúng tôi
+            🌠 Về chúng tôi
           </Link>
         </motion.div>
       </div>
