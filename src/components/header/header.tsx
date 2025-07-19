@@ -18,7 +18,7 @@ export default function Header() {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const cartCount = 2; // Placeholder - sau này lấy từ state/cart context
+  const cartCount = 2; // placeholder
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -30,8 +30,8 @@ export default function Header() {
     <>
       <header className={`header ${isScrolled ? "scrolled" : ""}`}>
         <div className="container">
-          <Link href="/" className="logo">
-            <span>NebulaStore</span>
+          <Link href="/" className="logo" aria-label="NebulaStore Home">
+            🌌 <span>NebulaStore</span>
           </Link>
 
           <nav className="nav-desktop">
@@ -47,14 +47,36 @@ export default function Header() {
           </nav>
 
           <div className="right-section">
-            <Link href="/cart" className="cart-icon">
-              <ShoppingCart size={24} />
-              {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
+            <Link href="/cart" className="cart-icon" aria-label="Giỏ hàng">
+              <ShoppingCart size={22} />
+              {cartCount > 0 && (
+                <span className="cart-badge">{cartCount}</span>
+              )}
             </Link>
-            <Link href="/login" className="auth-link">Đăng nhập</Link>
-            <Link href="/register" className="auth-link">Đăng ký</Link>
-            <button className="theme-toggle">🌓</button>
-            <button className="menu-toggle" onClick={() => setMobileOpen(!mobileOpen)}>
+
+            <Link href="/login" className="auth-link">
+              Đăng nhập
+            </Link>
+            <Link href="/signup" className="auth-link">
+              Đăng ký
+            </Link>
+
+            <button
+              className="theme-toggle"
+              aria-label="Chuyển chế độ sáng/tối"
+              aria-pressed="false"
+              onClick={() => {
+                // Future logic for dark mode
+              }}
+            >
+              🌓
+            </button>
+
+            <button
+              className="menu-toggle"
+              onClick={() => setMobileOpen(!mobileOpen)}
+              aria-label="Toggle mobile menu"
+            >
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -74,15 +96,22 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setMobileOpen(false)}
                 className={`mobile-link ${pathname === item.href ? "active" : ""}`}
+                onClick={() => setMobileOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <Link href="/cart" className="mobile-link">🛒 Giỏ hàng ({cartCount})</Link>
-            <Link href="/login" className="mobile-link">Đăng nhập</Link>
-            <Link href="/register" className="mobile-link">Đăng ký</Link>
+
+            <Link href="/cart" className="mobile-link">
+              🛒 Giỏ hàng ({cartCount})
+            </Link>
+            <Link href="/login" className="mobile-link">
+              Đăng nhập
+            </Link>
+            <Link href="/signup" className="mobile-link">
+              Đăng ký
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
